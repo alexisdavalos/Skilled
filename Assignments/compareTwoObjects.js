@@ -6,20 +6,26 @@
 //
 
 function compareTwoObjects(obj1, obj2) {
-  // write your code here
-  if (
-    Object.keys(obj1).length > Object.keys(obj2).length ||
-    Object.keys(obj2).length > Object.keys(obj1).length
-  ) {
+  // Grab size of input objects for comparison
+  obj1_size = Object.keys(obj1).length;
+  obj2_size = Object.keys(obj2).length;
+
+  // If object lengths differ they are not equal
+  if (obj1_size > obj2_size || obj2_size > obj1_size) {
     return false;
   } else {
+    // Loop through keys and compare
     for (const key in obj1) {
+      // Key values are equal
       if (obj1[key] === obj2[key]) {
+        // keep looping
         continue;
       } else {
+        // Key values are not equal break out
         return false;
       }
     }
+    // If loop finishes the objects are equal
     return true;
   }
 }
