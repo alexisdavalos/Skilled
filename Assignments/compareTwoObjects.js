@@ -7,7 +7,8 @@
 
 function compareTwoObjects(obj1, obj2) {
   // Grab size of input objects for comparison
-  equalSize = Object.keys(obj1).length === Object.keys(obj2).length ? true : false;
+  equalSize =
+    Object.keys(obj1).length === Object.keys(obj2).length ? true : false;
 
   // If object lengths differ they are not equal
   if (!equalSize) {
@@ -15,12 +16,18 @@ function compareTwoObjects(obj1, obj2) {
   } else {
     // Loop through keys and compare
     for (const key in obj1) {
-      // Key values are equal
-      if (obj1[key] === obj2[key]) {
-        // keep looping
-        continue;
+      // If Key exists in obj2
+      if (obj2.hasOwnProperty(key)) {
+        // Check if Key values are equal on both object
+        if (obj1[key] === obj2[key]) {
+          // Values are equal, continue looping
+          continue;
+        } else {
+          // Key values are not equal break out of loop
+          return false;
+        }
       } else {
-        // Key values are not equal break out
+        // Key does not exist in obj2
         return false;
       }
     }
@@ -29,8 +36,8 @@ function compareTwoObjects(obj1, obj2) {
   }
 }
 
-// // Test cases to verify
-// // true
+// Test cases to verify
+// true
 const a = { a: 1, b: 2 };
 const b = { a: 1, b: 2 };
 
@@ -60,16 +67,21 @@ const j = { a: 1, b: 2, c: 3 };
 
 console.log(compareTwoObjects(i, j));
 
-
 // true
 const k = { a: undefined, b: 2 };
-const l = { a: undefined, b: 2};
+const l = { a: undefined, b: 2 };
 
-console.log(compareTwoObjects(k,l));
+console.log(compareTwoObjects(k, l));
 
 //false
 
 const m = { a: 1, b: 2 };
 const n = { a: undefined, b: 2 };
 
-console.log(compareTwoObjects(m,n));
+console.log(compareTwoObjects(m, n));
+
+// false
+const o = { a: undefined, b: 2 };
+const p = { z: 1, b: 2 };
+
+console.log(compareTwoObjects(o, p));
