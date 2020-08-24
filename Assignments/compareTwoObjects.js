@@ -7,11 +7,10 @@
 
 function compareTwoObjects(obj1, obj2) {
   // Grab size of input objects for comparison
-  obj1_size = Object.keys(obj1).length;
-  obj2_size = Object.keys(obj2).length;
+  equalSize = Object.keys(obj1).length === Object.keys(obj2).length ? true : false;
 
   // If object lengths differ they are not equal
-  if (obj1_size > obj2_size || obj2_size > obj1_size) {
+  if (!equalSize) {
     return false;
   } else {
     // Loop through keys and compare
@@ -60,3 +59,17 @@ const i = { a: 1, b: 2 };
 const j = { a: 1, b: 2, c: 3 };
 
 console.log(compareTwoObjects(i, j));
+
+
+// true
+const k = { a: undefined, b: 2 };
+const l = { a: undefined, b: 2};
+
+console.log(compareTwoObjects(k,l));
+
+//false
+
+const m = { a: 1, b: 2 };
+const n = { a: undefined, b: 2 };
+
+console.log(compareTwoObjects(m,n));
