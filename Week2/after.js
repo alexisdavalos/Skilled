@@ -3,19 +3,16 @@
 function after(timesToCall, callback) {
   // after returns function that decrements timesToCall
   return () => {
-    if (timesToCall === 0) {
-      // Once timesToCall = 0 we don't execute the callback
-      return 0;
-    } else {
+    if (timesToCall !== 0) {
       // Decrement timesToCall and invoke callback function
       timesToCall -= 1;
-      callback();
+      return callback();
     }
   };
 }
 
 // test setup
-const myAfterFunc = after(2, () => console.log("test"));
+const myAfterFunc = after(3, () => console.log("test"));
 
 myAfterFunc(); // prints test
 myAfterFunc(); // prints test
