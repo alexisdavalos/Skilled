@@ -16,7 +16,10 @@ const debounce = (action, interval) => {
   return async () => {
     // waits for promise to resolve
     await intervalPromise.then((resolve) => {
-      resolve ? (passed = true) : (passed = false);
+      // toggles interval boolean to true
+      if (resolve) {
+        passed = true;
+      }
     });
     // checks the state of passed boolean
     if (passed) {
@@ -39,9 +42,9 @@ const myDebounce = debounce(() => console.log("test"), 1000);
 // myDebounce(); // too fast
 
 // // test 2
-myDebounce(); // test
-setTimeout(myDebounce, 2000); // test after 2 seconds
+// myDebounce(); // test
+// setTimeout(myDebounce, 2000); // test after 2 seconds
 
 // test 3
-// myDebounce(); // test
-// setTimeout(myDebounce, 900); // too fast
+myDebounce(); // test
+setTimeout(myDebounce, 900); // too fast
