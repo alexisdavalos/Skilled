@@ -28,7 +28,6 @@ const rotate = (matrix) => {
     [newMatrix[i], newMatrix[end - i]] = [newMatrix[end - i], newMatrix[i]];
   }
   // Also possible to simply do newMatrix.reverse()
-  //
 
   // Return rotated matrix
   return newMatrix;
