@@ -8,14 +8,14 @@ const rotate = (matrix) => {
 
   // Fill new matrix with 0s given input size
   // O(n) time | O(n) space
-  for (i = 0; i < size; i++) {
+  for (let i = 0; i < size; i++) {
     newMatrix.push([new Array(size).fill(0)]);
   }
 
   // Transpose and swap rows with columns from input matrix
   // O(n*n) time | O(1) space
-  for (i = 0; i < size; i++) {
-    for (j = i; j < size; j++) {
+  for (let i = 0; i < size; i++) {
+    for (let j = i; j < size; j++) {
       newMatrix[i][j] = matrix[j][i];
       newMatrix[j][i] = matrix[i][j];
     }
@@ -23,7 +23,7 @@ const rotate = (matrix) => {
 
   // Flip vertically by reversing the rows
   // O(n/2) time | O(1) space
-  for (i = 0; i < size / 2; i++) {
+  for (let i = 0; i < size / 2; i++) {
     let end = size - 1;
     [newMatrix[i], newMatrix[end - i]] = [newMatrix[end - i], newMatrix[i]];
   }
@@ -40,8 +40,8 @@ const rotate2 = (matrix) => {
 
   // Transpose and swap rows with columns in place
   // O(n*n) time | O(1) space
-  for (i = 0; i < size; i++) {
-    for (j = i; j < size; j++) {
+  for (let i = 0; i < size; i++) {
+    for (let j = i; j < size; j++) {
       temp = matrix[i][j];
       matrix[i][j] = matrix[j][i];
       matrix[j][i] = temp;
@@ -50,7 +50,7 @@ const rotate2 = (matrix) => {
 
   // Flip vertically by reversing the rows
   // O(n/2) time | O(1) space
-  for (i = 0; i < size / 2; i++) {
+  for (let i = 0; i < size / 2; i++) {
     let end = size - 1;
     [matrix[i], matrix[end - i]] = [matrix[end - i], matrix[i]];
   }
