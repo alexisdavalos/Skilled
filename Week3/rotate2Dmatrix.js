@@ -9,13 +9,14 @@ const rotate = (matrix) => {
   // Fill new matrix with 0s given input size
   // O(n) time | O(n) space
   for (let i = 0; i < size; i++) {
-    newMatrix.push([new Array(size).fill(0)]);
+    newMatrix.push(new Array(size).fill(0));
   }
 
   // Transpose and swap rows with columns from input matrix
   // O(n*n) time | O(1) space
   for (let i = 0; i < size; i++) {
     for (let j = i; j < size; j++) {
+      console.log(newMatrix);
       newMatrix[i][j] = matrix[j][i];
       newMatrix[j][i] = matrix[i][j];
     }
