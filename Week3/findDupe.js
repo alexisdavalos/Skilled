@@ -12,6 +12,7 @@ const findDupe = (input) => {
       continue;
     }
   }
+  // No Duplicates Found
   return false;
 };
 
@@ -28,6 +29,8 @@ const findDupe2 = (input) => {
       return input[i];
     }
   }
+  // No Duplicates Found
+  return false;
 };
 
 console.log(findDupe2([1, 3, 2, 5, 4, 3]));
@@ -43,6 +46,8 @@ const findDupe3 = (input) => {
       numbers[input[i]] = true;
     }
   }
+  // No Duplicates Found
+  return false;
 };
 
 console.log(findDupe3([1, 3, 2, 5, 4, 3]));
