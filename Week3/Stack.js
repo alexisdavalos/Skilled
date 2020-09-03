@@ -4,7 +4,6 @@ class CoolStack {
   constructor() {
     // Initialize storage for the stack
     this.storage = [];
-
     // Initialize minimum val in the stack
     this.minimum = 0;
   }
@@ -25,10 +24,8 @@ class CoolStack {
         }
       }
 
-      // replace minimum in stack
+      // replace minimum in stack and return item
       this.minimum = newMinimum;
-
-      // Return the item popped from stack
       return item;
     } else {
       return item;
@@ -47,7 +44,6 @@ class CoolStack {
       if (item < this.minimum) {
         // Override the current minimum
         this.minimum = item;
-
         // Push element onto stack
         this.storage.push(item);
       } else {
