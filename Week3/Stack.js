@@ -3,54 +3,50 @@
 class CoolStack {
   constructor() {
     // Initialize storage for the stack
-    this.storage = [];
+    this.storage = {};
+    // Initialize stack size
+    this.size = 0;
     // Initialize minimum val in the stack
     this.minimum = 0;
   }
 
+  // O(1) time | O(1) space
   pop() {
-    // O(1) time | O(1) space
-    let item = this.storage.pop();
+    // Check array size
+    if (this.size > 0) {
+      // Grab item from top of stack
+      let item = this.storage[this.size];
+      // Delete item from storage
+      delete this.storage[this.size];
+      // Decrement stack size
+      this.size -= 1;
 
-    // Popped current minimum
-    if (item === this.minimum) {
-      let newMinimum = this.storage[0];
-
-      // Loop through storage and find next lowest num O(n) time | O(1) space
-      for (let i = 0; i < this.storage.length; i++) {
-        // Check for new minimum
-        if (this.storage[i] < newMinimum) {
-          newMinimum = this.storage[i];
-        }
+      // Case: Popped current minimum
+      if (item === this.minimum) {
+        // Grab storage values and sort them
+        let values = Object.values(this.storage).sort();
+        // Update minimum
+        this.minimum = values[0];
       }
-
-      // replace minimum in stack and return item
-      this.minimum = newMinimum;
       return item;
     } else {
-      return item;
+      return "Stack is empty!";
     }
   }
-
+  // O(1) time | O(1) space
   push(item) {
-    // O(1) time | O(1) space
-    // Check if stack is empty
-    if (this.storage.length === 0) {
-      // New item becomes the minimum
+    // First item pushed onto stack
+    if (this.size === 0) {
       this.minimum = item;
-      this.storage.push(item);
-    } else {
-      // Check if item is less than current minimum
-      if (item < this.minimum) {
-        // Override the current minimum
-        this.minimum = item;
-        // Push element onto stack
-        this.storage.push(item);
-      } else {
-        // item is greater than or equal to minimum so push item onto stack
-        this.storage.push(item);
-      }
+    } else if (item < this.minimum) {
+      // Item is less than current minimum
+      this.minimum = item;
     }
+
+    // Increase stack size
+    this.size += 1;
+    // Push element onto stack
+    this.storage[this.size] = item;
   }
 
   getMin() {
