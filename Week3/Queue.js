@@ -13,7 +13,12 @@ class Queue {
   enqueue(item) {
     // Increment queue size
     this.size += 1;
-    // Places the item at the beggining of the queue's storage
+    // Checks if key already exists
+    while (this.storage[this.size]) {
+      // Keep incrementing
+      this.size += 1;
+    }
+    // Add new item
     this.storage[this.size] = item;
   }
   // O(1) time | O(1) space
@@ -26,6 +31,11 @@ class Queue {
       delete this.storage[this.remover];
       // Decrements the queue size
       this.size -= 1;
+      // Check if queue is empty
+      if (this.size === 0) {
+        // Reset remover
+        this.remover = 0;
+      }
       // Returns the item
       return item;
     } else {
@@ -35,11 +45,17 @@ class Queue {
 }
 
 const myQueue = new Queue();
-for (let i = 44; i < 55; i++) {
-  myQueue.enqueue(i);
-}
+
+myQueue.enqueue(4);
+myQueue.enqueue(7);
 console.log("Queue:", myQueue.storage);
-for (let i = 0; i < 5; i++) {
-  console.log(myQueue.dequeue());
-}
+console.log(myQueue.dequeue());
+myQueue.enqueue(9);
+myQueue.enqueue(8);
+myQueue.enqueue(7);
+console.log("Queue:", myQueue.storage);
+console.log(myQueue.dequeue());
+myQueue.enqueue(19);
+console.log("Queue:", myQueue.storage);
+console.log(myQueue.dequeue());
 console.log("Queue:", myQueue.storage);
