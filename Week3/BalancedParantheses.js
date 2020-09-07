@@ -22,8 +22,11 @@ const balancedParenthesis = (input) => {
       // Add bracket to stack
       stack.push(char);
     } else if (closeBrackets.has(char)) {
-      // Check if matching open bracket is in stack
-      brackets[char] === stack[stack.length - 1] ? stack.pop() : "";
+      // Check if matching open bracket is at the top of stack
+      if (brackets[char] === stack[stack.length - 1]) {
+        // Pop it off
+        stack.pop();
+      }
     }
   });
 
