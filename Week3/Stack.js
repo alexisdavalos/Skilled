@@ -4,10 +4,10 @@ class CoolStack {
   constructor() {
     // Initialize storage for the stack
     this.storage = {};
+    // Initialize storage for min
+    this.minStack = [];
     // Initialize stack size
     this.size = 0;
-    // Initialize minimum val in the stack
-    this.minimum = 0;
   }
 
   // O(1) time | O(1) space
@@ -22,11 +22,9 @@ class CoolStack {
       this.size -= 1;
 
       // Case: Popped current minimum
-      if (item === this.minimum) {
-        // Grab storage values and sort them
-        let values = Object.values(this.storage).sort();
-        // Update minimum
-        this.minimum = values[0];
+      if (item === this.getMin()) {
+        // Pop from minimum stack
+        this.minStack.pop();
       }
       return item;
     } else {
@@ -37,12 +35,11 @@ class CoolStack {
   push(item) {
     // First item pushed onto stack
     if (this.size === 0) {
-      this.minimum = item;
-    } else if (item < this.minimum) {
+      this.minStack.push(item);
+    } else if (item < this.getMin()) {
       // Item is less than current minimum
-      this.minimum = item;
+      this.minStack.push(item);
     }
-
     // Increase stack size
     this.size += 1;
     // Push element onto stack
@@ -51,7 +48,7 @@ class CoolStack {
 
   getMin() {
     // O(1) time | O(1) space
-    return this.minimum;
+    return this.minStack[this.minStack.length - 1];
   }
 }
 
