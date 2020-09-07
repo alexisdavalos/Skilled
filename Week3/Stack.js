@@ -20,7 +20,6 @@ class CoolStack {
       delete this.storage[this.size];
       // Decrement stack size
       this.size -= 1;
-
       // Case: Popped current minimum
       if (item === this.getMin()) {
         // Pop from minimum stack
