@@ -73,7 +73,7 @@ const dailyBalance = (balance, dates) => {
       // print key + balance
       console.log(`${key} - ${newBalance}`);
     } else {
-      // print key
+      // print key + balance
       console.log(`${key} - ${newBalance}`);
     }
   }
