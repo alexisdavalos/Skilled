@@ -32,7 +32,7 @@ const elevatorMethods = {
     this.direction = "idle";
   },
   checkFloor: function (floor) {
-    if (floor > 10) {
+    if (floor > 10 || floor < 1) {
       throw Error(`Floor: ${floor} is out of range (1-10)`);
     }
   },
