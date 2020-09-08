@@ -1,5 +1,5 @@
-// Write a function Elevator that will return an object when called with the ’new’ keyword.
-// The returned object should have three properties:
+// Write a class Elevator
+// The class object should have three properties:
 // - id
 // - currentFloor (1-10)
 // - direction (up, down, idle)
