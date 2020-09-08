@@ -11,7 +11,7 @@
 // Defining elevator methods
 const elevatorMethods = {
   reportStatus: function () {
-    var direction = "";
+    var direction;
     // Check elevator direction
     if (this.direction === "idle") {
       direction = `Elevator is idle.`;
