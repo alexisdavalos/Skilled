@@ -8,7 +8,7 @@
 Array.prototype.oddMap = function () {
   // Create copy of array being invoked
   let originalArray = this;
-  let newArray = new Array(originalArray.length);
+  let newArray = [...originalArray];
 
   // Loop through invoked array
   for (let i = 0; i < newArray.length; i++) {
@@ -16,9 +16,6 @@ Array.prototype.oddMap = function () {
     if (originalArray[i] % 2 === 0) {
       // Subtract 1 from number to made it odd and add to new array
       newArray[i] = originalArray[i] - 1;
-    } else {
-      // Add original number
-      newArray[i] = originalArray[i];
     }
   }
 
