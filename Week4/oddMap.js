@@ -7,15 +7,21 @@
 
 Array.prototype.oddMap = function () {
   // Create copy of array being invoked
-  let newArray = this;
+  let originalArray = this;
+  let newArray = new Array(originalArray.length);
+
   // Loop through invoked array
   for (let i = 0; i < newArray.length; i++) {
     // Check if number is even
-    if (newArray[i] % 2 === 0) {
-      // Subtract 1 from number to made it odd
-      newArray[i] -= 1;
+    if (originalArray[i] % 2 === 0) {
+      // Subtract 1 from number to made it odd and add to new array
+      newArray[i] = originalArray[i] - 1;
+    } else {
+      // Add original number
+      newArray[i] = originalArray[i];
     }
   }
+
   // Return a new modified array
   return newArray;
 };
@@ -23,3 +29,4 @@ Array.prototype.oddMap = function () {
 // Test case
 let myArr = [1, 2, 5, 7, 8, 14];
 console.log(myArr.oddMap());
+console.log(myArr);
