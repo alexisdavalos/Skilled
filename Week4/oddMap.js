@@ -28,5 +28,6 @@ Array.prototype.oddMap = function () {
 
 // Test case
 let myArr = [1, 2, 5, 7, 8, 14];
-console.log(myArr.oddMap());
-console.log(myArr);
+console.log("new odd array:", myArr.oddMap());
+// Original array not modified
+console.log("original array:", myArr);
